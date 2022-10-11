@@ -1,0 +1,73 @@
+﻿<Window x:Class="Programmming007.LibraryUI.Windows.SaveBookWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Programmming007.LibraryUI.Windows"
+        mc:Ignorable="d"
+        Title="SaveBookWindow" Height="1000" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Row="1" Grid.Column="1">
+            <StackPanel >
+                <Label Content="Name:" Margin="10,10,0,0"></Label>
+                <TextBox Margin="10" Text="{Binding BookModel.Name}"></TextBox>
+
+                <Label Content="Author list:" Margin="10,10,0,0"></Label>
+                <ListBox Margin="10" SelectionMode="Single"  ItemsSource="{Binding Authors}" SelectedItem="{Binding SelectedAuthorToDown}">
+                </ListBox>
+                
+                <Border Margin="0" >
+                    <Button Content="Move Down" Command="{Binding MoveAuthorDown}">
+                    </Button>
+                </Border>
+                <Border Margin="0" >
+                    <Button Content="Move Up" Command="{Binding MoveAuthorUp}">
+                    </Button>
+                </Border>
+
+                <Label Content="Selected Authors:" Margin="10,10,0,0"></Label>
+                <ListBox Margin="10"  ItemsSource="{Binding BookModel.SelectedAuthors}" SelectedItem="{Binding SelectedAuthorToUp}">
+                </ListBox>
+
+                <Label Content="Release date:" Margin="10,0,0,0"></Label>
+                <DatePicker Margin="10" SelectedDate="{Binding BookModel.ReleaseDate}"></DatePicker>
+
+                <Label Content="Page count:" Margin="10,0,0,0"></Label>
+                <TextBox Margin="10" Text="{Binding BookModel.PageCount}"></TextBox>
+
+                <Label Content="ISBN:" Margin="10,0,0,0"></Label>
+                <TextBox Margin="10" Text="{Binding BookModel.ISBN}"></TextBox>
+
+                <Label Content="Genre:" Margin="10,0,0,0"></Label>
+                <ComboBox Margin="10" ItemsSource="{Binding GenreList}" SelectedItem="{Binding BookModel.Genre}" ></ComboBox>
+
+                <Label Content="Publishing House:" Margin="10,0,0,0"></Label>
+                <TextBox Margin="10" Text="{Binding BookModel.PublishingHouse}"></TextBox>
+
+                <!--<Border Margin="10" >
+                    <Button Content="AddAuthor" Command="{Binding AddAuthor}" Style="{StaticResource btnAdd}">
+                    </Button>
+                </Border>-->
+                <Border Margin="10" >
+                    <Button Content="Save" Command="{Binding SaveBook}" Style="{StaticResource btnAdd}">
+                    </Button>
+                </Border>
+            </StackPanel>
+
+        </ScrollViewer>
+
+    </Grid>
+</Window>
